@@ -3,15 +3,19 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# KEYS
+#PATH
+CONFIG_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# KEYS
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 # DAtABASE
 MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
 MONGODB_DB = os.getenv("MONGODB_DB", "agent_memory")
+MONGODB_LOG_DB = os.getenv("MONGODB_LOG_DB","loggingdb")
 MONGODB_COLLECTION = os.getenv("MONGODB_COLLECTION", "conversations")
+MONGODB_LOG_COLLECTION = os.getenv("MONGODB_LOG_COLLECTION","multiagentlog")
 
 MYSQL_HOST = os.getenv("MYSQL_HOST", "localhost")
 MYSQL_USER = os.getenv("MYSQL_USER", "root")
