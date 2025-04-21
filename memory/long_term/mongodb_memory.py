@@ -1,10 +1,9 @@
 from typing import Dict, List, Any, Optional
-import pymongo
 from pymongo import MongoClient
-from memory import memory_interface
+from memory.memory_interface import MemoryInterface
 from config.settings import MONGODB_URI, MONGODB_DB, MONGODB_COLLECTION
 
-class MongoDBMemory(memory_interface):
+class MongoDBMemory(MemoryInterface):
 
     def __init__(self):
         self._client = MongoClient(MONGODB_URI)
