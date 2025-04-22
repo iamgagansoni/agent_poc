@@ -1,7 +1,16 @@
 import os
 from dotenv import load_dotenv
+import socket
 
 load_dotenv()
+
+def get_ipv4():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(("8.8.8.8", 80))
+        return s.getsockname()[0]
+    finally:
+        s.close()
 
 #PATH
 CONFIG_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -34,3 +43,5 @@ API_PORT = int(os.getenv("API_PORT", "8000"))
 #Streamlit
 STREAMLIT_PORT = int(os.getenv("STREAMLIT_PORT", "8501"))
 
+#IP
+IP_V4 = get_ipv4()

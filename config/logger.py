@@ -1,6 +1,7 @@
 from loguru import logger
 from pymongo import MongoClient
 import json
+from config.settings import IP_V4
 
 class Logging:
     def __init__(self, MONGODB_URI, MONGODB_LOG_DB, MONGODB_LOG_COLLECTION):
@@ -32,6 +33,7 @@ class Logging:
             
             log_entry = {
                 "timestamp": log_data.get("time", {}).get("repr"),
+                "host": IP_V4,
                 "level": log_data.get("level", {}).get("name"),
                 "message": log_data.get("message"),
                 "file": log_data.get("file", {}).get("name"),
